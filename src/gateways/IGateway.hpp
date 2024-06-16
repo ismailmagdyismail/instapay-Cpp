@@ -1,7 +1,6 @@
-#ifndef _IGATEWAY_HPP_
-#define _IGATEWAY_HPP_
+#ifndef IGATEWAY_HPP_
+#define IGATEWAY_HPP_
 
-#include <iostream>
 #include <optional>
 
 class IGateway{

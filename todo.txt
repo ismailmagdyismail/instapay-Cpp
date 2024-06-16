@@ -1,0 +1,2 @@
+- add visitor pattern to have auxiliary behaviour (utils) for users domain (like creating appropriate gateway)
+-

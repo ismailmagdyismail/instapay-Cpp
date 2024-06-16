@@ -7,7 +7,7 @@
 class IUser {
 public:
     virtual const UserProfile& getUserProfile() = 0;
-    virtual std::unique_ptr<IGateway>getGateway() = 0;
+    virtual std::unique_ptr<IGateway>createGateway() = 0; // TODO : Move to visitor instead
 };
 
 

@@ -1,11 +1,12 @@
-#ifndef INSTAPAY_WALLETGATEWAY_HPP
-#define INSTAPAY_WALLETGATEWAY_HPP
+#ifndef INSTAPAY_MOCKWALLETGATEWAY_HPP
+#define INSTAPAY_MOCKWALLETGATEWAY_HPP
 
 #include "../../IGateway.hpp"
+#include <iostream>
 
-class WalletGateway final : public IGateway{
+class MockWalletGateway final : public IGateway{
 public:
-    WalletGateway(const std::string& phoneNumber);
+    MockWalletGateway(const std::string& phoneNumber);
     std::optional<std::string>deposit(const double& amount)override;
     std::optional<std::string>withdraw(const double& amount)override;
     std::optional<double>getBalance()const override;
@@ -14,4 +15,4 @@ private:
 };
 
 
-#endif //INSTAPAY_WALLETGATEWAY_HPP
+#endif
