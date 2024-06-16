@@ -2,7 +2,7 @@
 #define INSTAPAY_IUSER_H
 
 #include "./UserProfile.hpp"
-#include "../gateways/IGateway.hpp"
+#include "../../gateways/IGateway.hpp"
 
 class IUser {
 public:

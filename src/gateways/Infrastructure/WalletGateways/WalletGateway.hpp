@@ -1,7 +1,7 @@
 #ifndef INSTAPAY_WALLETGATEWAY_HPP
 #define INSTAPAY_WALLETGATEWAY_HPP
 
-#include "../IGateway.hpp"
+#include "../../IGateway.hpp"
 
 class WalletGateway final : public IGateway{
 public:

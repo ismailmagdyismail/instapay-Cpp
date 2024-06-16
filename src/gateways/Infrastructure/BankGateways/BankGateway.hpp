@@ -1,7 +1,7 @@
 #ifndef BANKGATEWAY_HPP_
 #define BANKGATEWAY_HPP_
 
-#include "../IGateway.hpp"
+#include "../../IGateway.hpp"
 
 class BankGateway final : public IGateway{
 public:

@@ -4,7 +4,7 @@
 #include <iostream>
 #include "./UserProfile.hpp"
 #include "IUser.hpp"
-#include "../gateways/BankGateways/BankGateway.hpp"
+#include "../../gateways/BankGateways/BankGateway.hpp"
 
 class BankUser final :public IUser{
 public:

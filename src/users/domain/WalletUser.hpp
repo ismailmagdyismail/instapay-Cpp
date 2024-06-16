@@ -4,7 +4,7 @@
 #include <iostream>
 #include "./UserProfile.hpp"
 #include "./IUser.hpp"
-#include "../gateways/WalletGateways/WalletGateway.hpp"
+#include "../../gateways/WalletGateways/WalletGateway.hpp"
 
 class WalletUser final:public IUser{
 public:
