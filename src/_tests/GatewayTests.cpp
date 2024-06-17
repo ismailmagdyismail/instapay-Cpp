@@ -12,19 +12,31 @@ void GatewayTests::run() {
 
 void GatewayTests::testMockBankGateway() {
     std::cout<<"=======....MockBankGateway tests....=======\n";
-    const double ADD_AMOUNT = 1040;
+    const double DEPOSIT_AMOUNT = 1040;
     std::unique_ptr<IGateway> gateway = std::make_unique<MockBankGateway>("011223455");
     double oldBalance = gateway->getBalance().value_or(0);
-    gateway->deposit(ADD_AMOUNT);
-    assert(oldBalance+ADD_AMOUNT == gateway->getBalance().value_or(0));
+    gateway->deposit(DEPOSIT_AMOUNT);
+    assert(oldBalance+DEPOSIT_AMOUNT == gateway->getBalance().value_or(0));
+
+    const double WITHDRAW_AMOUNT = 1040;
+    oldBalance = gateway->getBalance().value_or(0);
+    gateway->withdraw(WITHDRAW_AMOUNT);
+    assert(oldBalance-WITHDRAW_AMOUNT == gateway->getBalance().value_or(0));
+    assert(gateway->withdraw(100000).has_value());
 }
 
 void GatewayTests::testMockWalletGateway() {
     std::cout<<"=======....MockWalletGateway tests....=======\n";
-    const double ADD_AMOUNT = 1040;
+    const double DEPOSIT_AMOUNT = 1040;
     std::unique_ptr<IGateway> gateway = std::make_unique<MockWalletGateway>("011223455");
     double oldBalance = gateway->getBalance().value_or(0);
-    gateway->deposit(ADD_AMOUNT);
-    assert(oldBalance+ADD_AMOUNT == gateway->getBalance().value_or(0));
+    gateway->deposit(DEPOSIT_AMOUNT);
+    assert(oldBalance + DEPOSIT_AMOUNT == gateway->getBalance().value_or(0));
+
+    const double WITHDRAW_AMOUNT = 1040;
+    oldBalance = gateway->getBalance().value_or(0);
+    gateway->withdraw(WITHDRAW_AMOUNT);
+    assert(oldBalance-WITHDRAW_AMOUNT == gateway->getBalance().value_or(0));
+    assert(gateway->withdraw(100000).has_value());
 }
 

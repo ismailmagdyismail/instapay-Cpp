@@ -18,7 +18,7 @@ std::optional<std::string> MockBankGateway::withdraw(const double &amount){
     if(!balance.has_value()){
         return "No bank account exists for this account number " +this->bankAccountNumber;
     }
-    return MockBankDB::updateUserBalance(this->bankAccountNumber,amount - balance.value());
+    return MockBankDB::updateUserBalance(this->bankAccountNumber,balance.value() - amount);
 }
 
 std::optional<double> MockBankGateway::getBalance()const {

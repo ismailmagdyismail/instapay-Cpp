@@ -20,6 +20,9 @@ std::optional<std::string> MockWalletDB::updateUserBalance(const std::string& ph
     if(!MockWalletDB::isRegisteredUser(phoneNumber)){
         return {"No Wallet found for this phone number " + phoneNumber};
     }
+    if(newBalance < 0 ){
+        return {"Invalid amount , balance cannot be -ve"};
+    }
     MockWalletDB::db[phoneNumber] = newBalance;
     return  {};
 }

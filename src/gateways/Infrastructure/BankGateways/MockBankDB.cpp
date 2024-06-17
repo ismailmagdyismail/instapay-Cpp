@@ -13,6 +13,9 @@ std::optional<std::string> MockBankDB::updateUserBalance(std::string accountNumb
     if(!isRegisteredUser(accountNumber)){
         return "No bank account with this account number exists "+accountNumber;
     }
+    if(newBalance < 0 ){
+        return {"Invalid amount , balance cannot be -ve"};
+    }
     MockBankDB::db[accountNumber] = newBalance;
     return {};
 }
