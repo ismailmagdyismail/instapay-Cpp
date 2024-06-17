@@ -2,7 +2,7 @@
 #define IGATEWAY_HPP_
 
 #include <optional>
-#include "../presentation/Response.h"
+#include "../presentation/Response.hpp"
 
 class IGateway{
 public:

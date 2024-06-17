@@ -4,7 +4,7 @@
 #include <iostream>
 #include <optional>
 #include <unordered_map>
-#include "../../../presentation/Response.h"
+#include "../../../presentation/Response.hpp"
 
 class MockWalletDB {
 public:
@@ -23,6 +23,7 @@ private:
     };
     static void seedDB(){
         MockWalletDB::db["011223455"] = 1000.0;
+        MockWalletDB::db["011223466"] = 1000.0;
     }
     static Initializer initializer ;
 };

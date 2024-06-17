@@ -13,6 +13,9 @@ public:
     const UserProfile& getUserProfile() override{
         return this->userProfile;
     }
+    virtual UserType getUserType()override{
+        return UserType::WALLET_USER;
+    }
     std::unique_ptr<IGateway> createGateway() override{
         return std::make_unique<MockWalletGateway>(this->userProfile.phoneNumber);
     }

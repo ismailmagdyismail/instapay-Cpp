@@ -2,8 +2,8 @@
 #include <iostream>
 #include <cassert>
 #include "UsersTests.hpp"
-#include "../users/dataAccess/IUserDataAccess.h"
-#include "../users/dataAccess/InMemoryUsers.h"
+#include "../users/dataAccess/IUserDataAccess.hpp"
+#include "../users/dataAccess/InMemoryUsers.hpp"
 #include "../users/domain/BankUser.hpp"
 #include "../users/domain/WalletUser.hpp"
 

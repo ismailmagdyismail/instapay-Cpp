@@ -1,15 +1,23 @@
 #include "TransferMoney.hpp"
 
 
-TransferMoney::TransferMoney(std::unique_ptr<IGateway>&& senderGateway,
-                              std::unique_ptr<IGateway>&& receiverGateway) {
+TransferMoney::TransferMoney(
+        std::unique_ptr<IGateway>&& senderGateway,
+        std::unique_ptr<IGateway>&& receiverGateway,
+        std::unique_ptr<TransferAuthorizer>&& transferAuth
+                              ) {
     this->senderGateway = std::move(senderGateway);
     this->receiverGateway = std::move(receiverGateway);
+    this->transferAuth = std::move(transferAuth);
 }
 
-const Response TransferMoney::execute(const double &amount) {
+ Response TransferMoney::execute(const double &amount) {
     // TODO : this logic of Transferring and atomicity should be Handled by the 3rrd party API service
-    auto response = this->senderGateway->withdraw(amount);
+    auto response = this->transferAuth->isTransferValid();
+    if(!response.isSuccessful){
+        return response;
+    }
+    response = this->senderGateway->withdraw(amount);
     if(!response.isSuccessful){
         return response;
     }

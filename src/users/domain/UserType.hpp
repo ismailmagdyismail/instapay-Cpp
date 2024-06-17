@@ -1,0 +1,10 @@
+#ifndef INSTAPAY_USERTYPE_HPP
+#define INSTAPAY_USERTYPE_HPP
+
+enum class UserType {
+    WALLET_USER,
+    BANK_USER,
+};
+
+
+#endif //INSTAPAY_USERTYPE_HPP

@@ -1,5 +1,5 @@
-#ifndef INSTAPAY_RESPONSE_H
-#define INSTAPAY_RESPONSE_H
+#ifndef INSTAPAY_RESPONSE_HPP
+#define INSTAPAY_RESPONSE_HPP
 
 #include <iostream>
 
@@ -10,4 +10,4 @@ struct Response {
 };
 
 
-#endif //INSTAPAY_RESPONSE_H
+#endif //INSTAPAY_RESPONSE_HPP

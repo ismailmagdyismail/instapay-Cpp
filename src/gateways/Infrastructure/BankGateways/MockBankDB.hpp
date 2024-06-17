@@ -2,7 +2,7 @@
 #define INSTAPAY_MOCKBANKDB_HPP
 #include <iostream>
 #include <unordered_map>
-#include "../../../presentation/Response.h"
+#include "../../../presentation/Response.hpp"
 
 class MockBankDB {
 public:

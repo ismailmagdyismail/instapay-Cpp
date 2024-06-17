@@ -23,15 +23,20 @@ add_executable(
         src/users/domain/IUser.hpp
         src/_tests/GatewayTests.cpp
         src/_tests/GatewayTests.hpp
-        src/users/dataAccess/IUserDataAccess.h
-        src/presentation/Response.h
+        src/users/dataAccess/IUserDataAccess.hpp
+        src/presentation/Response.hpp
         src/users/dataAccess/InMemoryUsers.cpp
-        src/users/dataAccess/InMemoryUsers.h
+        src/users/dataAccess/InMemoryUsers.hpp
         src/_tests/UsersTests.cpp
         src/_tests/UsersTests.hpp
-        src/transactions/domain/ITransaction.hpp
-        src/transactions/domain/ITransaction.hpp
-        src/transactions/domain/TransferMoney.cpp
-        src/transactions/domain/TransferMoney.hpp
-        src/transactions/usecase/TransactionUseCase.hpp
+        src/transactions/domain/entities/ITransaction.hpp
+        src/transactions/domain/entities/ITransaction.hpp
+        src/transactions/domain/entities/transfers/TransferMoney.cpp
+        src/transactions/domain/entities/transfers/TransferMoney.hpp
+        src/transactions/usecase/TransferUseCase.hpp
+        src/transactions/domain/factories/TransactionsFactory.hpp
+        src/transactions/domain/entities/transfers/TransferAuthorizer.hpp
+        src/users/domain/UserType.hpp
+        src/transactions/usecase/TransferUsecase.cpp
+        src/transactions/domain/entities/transfers/TransferAuthorizer.cpp
 )

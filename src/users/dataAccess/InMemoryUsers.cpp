@@ -1,6 +1,6 @@
-#include "InMemoryUsers.h"
+#include "InMemoryUsers.hpp"
 
-unsigned int InMemoryUsers::getUsersCount() {
+unsigned int InMemoryUsers::getUsersCount() const {
     return this->db.size();
 }
 
@@ -10,16 +10,22 @@ std::optional<Response> InMemoryUsers::addUser(const std::unique_ptr<IUser>& new
         return Response{ false, 401, "user already exists with this data"};
     }
     this->db[userName] = newUser->clone();
+    return Response{true,200,""};
+}
+
+std::optional<IUser*> InMemoryUsers::getUserByPhoneNumber(const std::string &phoneNumber) const{
+    for(auto& entry : this->db){
+        if(entry.first == phoneNumber){
+            return entry.second.get();
+        }
+    }
     return {};
 }
 
-
-std::optional<std::unique_ptr<IUser>> InMemoryUsers::getUserByPhoneNumber(const std::string &phoneNumber) {
-//    TODO:implement
-    return {};
-}
-
-std::optional<std::unique_ptr<IUser>> InMemoryUsers::getUserByUserName(const std::string& userName) {
-//    TODO:implement
+std::optional<IUser*> InMemoryUsers::getUserByUserName(const std::string& userName)const{
+    auto it = this->db.find(userName);
+    if (it != this->db.end()) {
+        return it->second.get();
+    }
     return {};
 }
