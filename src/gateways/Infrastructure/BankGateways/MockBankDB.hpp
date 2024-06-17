@@ -2,13 +2,14 @@
 #define INSTAPAY_MOCKBANKDB_HPP
 #include <iostream>
 #include <unordered_map>
+#include "../../../presentation/Response.h"
 
 class MockBankDB {
 public:
     static bool isRegisteredUser(std::string accountNumber);
     static std::optional<double> getUserBalance(std::string accountNumber);
-    static std::optional<std::string>updateUserBalance(std::string accountNumber,double newBalance);
-    static std::optional<std::string>addUser(std::string accountNumber);
+    static Response updateUserBalance(std::string accountNumber, double newBalance);
+    static Response addUser(std::string accountNumber);
 
 private:
     static std::unordered_map<std::string,double>db;

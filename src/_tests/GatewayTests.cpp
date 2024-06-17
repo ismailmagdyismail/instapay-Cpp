@@ -18,7 +18,7 @@ void testMockBankGateway() {
     oldBalance = gateway->getBalance().value_or(0);
     gateway->withdraw(WITHDRAW_AMOUNT);
     assert(oldBalance-WITHDRAW_AMOUNT == gateway->getBalance().value_or(0));
-    assert(gateway->withdraw(100000).has_value());
+    assert(!gateway->withdraw(100000).isSuccessful);
 }
 
 void testMockWalletGateway() {
@@ -33,7 +33,7 @@ void testMockWalletGateway() {
     oldBalance = gateway->getBalance().value_or(0);
     gateway->withdraw(WITHDRAW_AMOUNT);
     assert(oldBalance-WITHDRAW_AMOUNT == gateway->getBalance().value_or(0));
-    assert(gateway->withdraw(100000).has_value());
+    assert(!gateway->withdraw(100000).isSuccessful);
 }
 
 void GatewayTests::run() {

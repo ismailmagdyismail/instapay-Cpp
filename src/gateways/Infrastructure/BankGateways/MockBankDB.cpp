@@ -8,16 +8,15 @@ bool MockBankDB::isRegisteredUser(std::string accountNumber) {
     return MockBankDB::db.find(accountNumber) != MockBankDB::db.end();
 }
 
-
-std::optional<std::string> MockBankDB::updateUserBalance(std::string accountNumber, double newBalance) {
+Response MockBankDB::updateUserBalance(std::string accountNumber, double newBalance) {
     if(!isRegisteredUser(accountNumber)){
-        return "No bank account with this account number exists "+accountNumber;
+        return Response{false,404,"No bank account with this account number exists "+accountNumber};
     }
     if(newBalance < 0 ){
-        return {"Invalid amount , balance cannot be -ve"};
+        return Response{false,400,"Invalid amount , balance cannot be -ve"};
     }
     MockBankDB::db[accountNumber] = newBalance;
-    return {};
+    return Response{true,200,""};
 }
 
 std::optional<double> MockBankDB::getUserBalance(std::string accountNumber) {
@@ -27,10 +26,9 @@ std::optional<double> MockBankDB::getUserBalance(std::string accountNumber) {
     return MockBankDB::db[accountNumber];
 }
 
-std::optional<std::string> MockBankDB::addUser(std::string accountNumber) {
+Response MockBankDB::addUser(std::string accountNumber) {
     if(MockBankDB::isRegisteredUser(accountNumber)){
-        return {"Bank account with this number is already registered"+accountNumber};
+        return Response{false,404,"Bank account with this number is already registered"+accountNumber};
     }
-    MockBankDB::db[accountNumber] = 0.0;
-    return {};
+    return Response{true,200,""};
 }

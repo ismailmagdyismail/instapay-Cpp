@@ -5,18 +5,18 @@ MockBankGateway::MockBankGateway(const std::string &bankAccountNumber) {
     this->bankAccountNumber = bankAccountNumber;
 }
 
-std::optional<std::string> MockBankGateway::deposit(const double &amount){
+Response MockBankGateway::deposit(const double &amount){
     std::optional<double> balance = MockBankDB::getUserBalance(this->bankAccountNumber);
     if(!balance.has_value()){
-        return "No bank account exists for this account number " +this->bankAccountNumber;
+        return Response{false,404,"No Wallet exists for this phone number" +this->bankAccountNumber};
     }
-    return MockBankDB::updateUserBalance(this->bankAccountNumber,amount + balance.value());
+    return MockBankDB::updateUserBalance(this->bankAccountNumber,balance.value() + amount);
 }
 
-std::optional<std::string> MockBankGateway::withdraw(const double &amount){
+Response MockBankGateway::withdraw(const double &amount){
     std::optional<double> balance = MockBankDB::getUserBalance(this->bankAccountNumber);
     if(!balance.has_value()){
-        return "No bank account exists for this account number " +this->bankAccountNumber;
+        return Response{false,404,"No Wallet exists for this phone number" +this->bankAccountNumber};
     }
     return MockBankDB::updateUserBalance(this->bankAccountNumber,balance.value() - amount);
 }

@@ -7,8 +7,8 @@
 class MockWalletGateway final : public IGateway{
 public:
     MockWalletGateway(const std::string& phoneNumber);
-    std::optional<std::string>deposit(const double& amount)override;
-    std::optional<std::string>withdraw(const double& amount)override;
+    Response deposit(const double& amount)override;
+    Response withdraw(const double& amount)override;
     std::optional<double>getBalance()const override;
 private:
     std::string phoneNumber;

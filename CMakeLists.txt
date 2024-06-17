@@ -29,4 +29,9 @@ add_executable(
         src/users/dataAccess/InMemoryUsers.h
         src/_tests/UsersTests.cpp
         src/_tests/UsersTests.hpp
+        src/transactions/domain/ITransaction.hpp
+        src/transactions/domain/ITransaction.hpp
+        src/transactions/domain/TransferMoney.cpp
+        src/transactions/domain/TransferMoney.hpp
+        src/transactions/usecase/TransactionUseCase.hpp
 )

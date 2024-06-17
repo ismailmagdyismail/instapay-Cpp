@@ -16,21 +16,21 @@ std::optional<double> MockWalletDB::getUserBalance(const std::string& phoneNumbe
     return db[phoneNumber];
 }
 
-std::optional<std::string> MockWalletDB::updateUserBalance(const std::string& phoneNumber, const double& newBalance) {
+Response MockWalletDB::updateUserBalance(const std::string& phoneNumber, const double& newBalance) {
     if(!MockWalletDB::isRegisteredUser(phoneNumber)){
-        return {"No Wallet found for this phone number " + phoneNumber};
+        return Response{false,404,"No Wallet found for this phone number " + phoneNumber};
     }
     if(newBalance < 0 ){
-        return {"Invalid amount , balance cannot be -ve"};
+        return Response{false,404,"Invalid amount , balance cannot be -ve"};
     }
     MockWalletDB::db[phoneNumber] = newBalance;
-    return  {};
+    return  Response{true,200,""};
 }
 
-std::optional<std::string>MockWalletDB::addUser(const std::string& phoneNumber) {
+Response MockWalletDB::addUser(const std::string& phoneNumber) {
     if(MockWalletDB::isRegisteredUser(phoneNumber)){
-        return {"An account already exists for this phone number" + phoneNumber};
+        return Response{false,404,"An account already exists for this phone number" + phoneNumber};
     }
     MockWalletDB::db[phoneNumber] = 0.0;
-    return {};
+    return Response{true,200,""};
 }
