@@ -7,6 +7,7 @@ struct UserProfile{
    const std::string userName;
    const std::string password;
    const std::string phoneNumber;
+   UserProfile(const UserProfile& other) = default ;
 };
 
 #endif

@@ -1,5 +1,7 @@
-#include "./_tests/GatewayTests.hpp"
+#include "_tests/GatewayTests.hpp"
+#include "_tests/UsersTests.hpp"
 
 int main(){
-   GatewayTests::run();
+    GatewayTests::run();
+    UsersTests::run();
 }

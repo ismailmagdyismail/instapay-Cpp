@@ -8,11 +8,16 @@
 
 class WalletUser final:public IUser{
 public:
+    WalletUser(const UserProfile& profile,const std::string& walletProvider):
+    userProfile{profile},walletProvider{walletProvider}{}
     const UserProfile& getUserProfile() override{
         return this->userProfile;
     }
     std::unique_ptr<IGateway> createGateway() override{
         return std::make_unique<MockWalletGateway>(this->userProfile.phoneNumber);
+    }
+    virtual std::unique_ptr<IUser> clone()override{
+        return std::make_unique<WalletUser>(*this);
     }
 private:
     UserProfile userProfile;

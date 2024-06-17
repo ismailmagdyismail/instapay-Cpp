@@ -3,7 +3,5 @@
 
 namespace GatewayTests {
     void run();
-    void testMockBankGateway();
-    void testMockWalletGateway();
 }
-#endif //INSTAPAY_GATEWAYTESTS_HPP
+#endif

@@ -5,12 +5,8 @@
 #include "GatewayTests.hpp"
 #include "../gateways/Infrastructure/WalletGateways/MockWalletGateway.hpp"
 
-void GatewayTests::run() {
-    GatewayTests::testMockBankGateway();
-    GatewayTests::testMockWalletGateway();
-}
 
-void GatewayTests::testMockBankGateway() {
+void testMockBankGateway() {
     std::cout<<"=======....MockBankGateway tests....=======\n";
     const double DEPOSIT_AMOUNT = 1040;
     std::unique_ptr<IGateway> gateway = std::make_unique<MockBankGateway>("011223455");
@@ -25,7 +21,7 @@ void GatewayTests::testMockBankGateway() {
     assert(gateway->withdraw(100000).has_value());
 }
 
-void GatewayTests::testMockWalletGateway() {
+void testMockWalletGateway() {
     std::cout<<"=======....MockWalletGateway tests....=======\n";
     const double DEPOSIT_AMOUNT = 1040;
     std::unique_ptr<IGateway> gateway = std::make_unique<MockWalletGateway>("011223455");
@@ -40,3 +36,7 @@ void GatewayTests::testMockWalletGateway() {
     assert(gateway->withdraw(100000).has_value());
 }
 
+void GatewayTests::run() {
+    testMockBankGateway();
+    testMockWalletGateway();
+}

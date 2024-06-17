@@ -23,4 +23,10 @@ add_executable(
         src/users/domain/IUser.hpp
         src/_tests/GatewayTests.cpp
         src/_tests/GatewayTests.hpp
+        src/users/dataAccess/IUserDataAccess.h
+        src/presentation/Response.h
+        src/users/dataAccess/InMemoryUsers.cpp
+        src/users/dataAccess/InMemoryUsers.h
+        src/_tests/UsersTests.cpp
+        src/_tests/UsersTests.hpp
 )
