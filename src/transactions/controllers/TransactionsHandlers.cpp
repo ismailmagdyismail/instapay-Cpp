@@ -1,15 +1,29 @@
 #include "TransactionsHandlers.hpp"
 #include "../usecase/TransactionsUsecase.hpp"
+#include "../../../json/single_include/nlohmann/json.hpp"
 
 
 void TransactionsHandlers::handleTransfer(
-        const httplib::Request &,
+        const httplib::Request& request,
         httplib::Response &response,
         const std::unique_ptr<IUserDataAccess>&userDataAccess,
         const std::unique_ptr<ITransactionDataAccess>&transactionDataAccess
 ) {
-    std::string senderUserName ="ismail1";
-    std::string receiverUserName ="ismail2";
+    response.set_header("Content-Type","application/json");
+    using json = nlohmann::json;
+    json responseBody ;
+
+    auto body = json::parse(request.body);
+    std::string senderUserName = body["senderUserName"];
+    std::string receiverUserName = body["receiverUserName"];
+    if(senderUserName.empty() || receiverUserName.empty()){
+        response.status = 400;
+        responseBody["status"] = "fail",
+        responseBody["message"] = "must specify both sender and receiver user names";
+        response.set_content(responseBody.dump(),"application/json");
+        return ;
+    }
+
     double amount =  10;
     OperationResult operationResult = TransactionUsecase::transfer(
             senderUserName,
@@ -18,25 +32,47 @@ void TransactionsHandlers::handleTransfer(
             userDataAccess,
             transactionDataAccess
     );
-    response.status = (int) operationResult.statusCode;
     if(operationResult.isSuccessful){
-        response.set_content("status:success","text/plain");
+        responseBody["status"] = "success",
+        responseBody["message"] = "transactions executed successfully";
     }else{
-        response.set_content("status"+operationResult.message,"text/plain");
+        responseBody["status"] = "fail",
+        responseBody["message"] = operationResult.message;
     }
+    response.status = (int) operationResult.statusCode;
+    response.set_content(responseBody.dump(),"application/json");
+    response.set_content(responseBody.dump(),"application/json");
+
 }
 
 void TransactionsHandlers::handleGetAllTransfers(
-        const httplib::Request &,
+        const httplib::Request& request,
         httplib::Response &response,
         const std::unique_ptr<ITransactionDataAccess> &transactionDataAccess
         ) {
-    std::string userName = "ismail1";
-    auto transactions = TransactionUsecase::getAllUserTransactions(userName,transactionDataAccess);
-    std::cout<<transactions.size()<<'\n';
-    std::string content;
-    for(auto& transaction:transactions){
-        content += "sender:"+transaction.sender+"\n"+"receiver:"+transaction.receiver+"\n"+"id:"+ std::to_string(transaction.id) + "\n";
+    response.set_header("Content-Type","application/json");
+    using json = nlohmann::json;
+    json responseBody ;
+    std::string userName = request.get_param_value("userName");
+
+    if(userName.empty()){
+        responseBody["status"] = "fail";
+        responseBody["message"] = "must specify user name";
+        response.set_content(responseBody.dump(),"application/json");
+        return;
     }
-    response.set_content(content, "text/plain");
+
+    auto transactions = TransactionUsecase::getAllUserTransactions(userName,transactionDataAccess);
+    std::string content;
+    json transactionsContent = json::array();
+    for(auto& transaction:transactions){
+        json transactionContent;
+        transactionContent["id"] = transaction.id;
+        transactionContent["sender"] = transaction.sender;
+        transactionContent["receiver"] = transaction.receiver;
+        transactionsContent.push_back(transactionContent);
+    }
+    responseBody["status"] = "success";
+    responseBody["transactions"] = transactionsContent;
+    response.set_content(responseBody.dump(), "application/json");
 }
