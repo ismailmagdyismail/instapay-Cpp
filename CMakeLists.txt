@@ -42,10 +42,12 @@ add_executable(
         src/transactions/dataAccess/InMemoryTransactions.cpp
         src/transactions/dataAccess/InMemoryTransactions.hpp
         src/users/controllers/UsersHandlers.cpp
-        src/users/controllers/UsersHandlers.h
+        src/users/controllers/UsersHandlers.hpp
         src/transactions/controllers/TransactionsHandlers.cpp
         src/transactions/controllers/TransactionsHandlers.hpp
         src/InstapayServer.cpp
         src/InstapayServer.h
         src/transactions/usecase/TransactionsUsecase.cpp
+        src/users/usecase/UsersUsecase.cpp
+        src/users/usecase/UsersUsecase.hpp
 )

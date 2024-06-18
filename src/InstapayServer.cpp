@@ -3,6 +3,7 @@
 #include "users/domain/WalletUser.hpp"
 #include "users/dataAccess/InMemoryUsers.hpp"
 #include "transactions/dataAccess/InMemoryTransactions.hpp"
+#include "users/controllers/UsersHandlers.hpp"
 
 InstapayServer* InstapayServer::instance = nullptr;
 
@@ -23,10 +24,12 @@ InstapayServer::InstapayServer() {
         TransactionsHandlers::handleGetAllTransfers(req,res,this->transactionDataAccess);
     });
 
-
     // users Endpoints
-    server.Get("/", [this](const httplib::Request& req,httplib::Response& res){
-        res.set_content("Post Request", "application/json");
+    server.Get("/api/v1/signup/", [this](const httplib::Request& req,httplib::Response& res){
+        UsersHandlers::handleSignup(req,res,this->userDataAccess);
+    });
+    server.Get("/api/v1/users/balance", [this](const httplib::Request& req,httplib::Response& res){
+       UsersHandlers::handleGetUserBalance(req,res,this->userDataAccess);
     });
 }
 
