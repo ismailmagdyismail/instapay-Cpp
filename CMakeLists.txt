@@ -34,9 +34,11 @@ add_executable(
         src/transactions/domain/entities/transfers/TransferMoney.cpp
         src/transactions/domain/entities/transfers/TransferMoney.hpp
         src/transactions/usecase/TransferUseCase.hpp
-        src/transactions/domain/factories/TransactionsFactory.hpp
         src/transactions/domain/entities/transfers/TransferAuthorizer.hpp
         src/users/domain/UserType.hpp
-        src/transactions/usecase/TransferUsecase.cpp
         src/transactions/domain/entities/transfers/TransferAuthorizer.cpp
+        src/transactions/domain/entities/transfers/Transaction.hpp
+        src/transactions/dataAccess/ITransactionDataAccess.hpp
+        src/transactions/dataAccess/InMemoryTransactions.cpp
+        src/transactions/dataAccess/InMemoryTransactions.hpp
 )
