@@ -1,12 +1,11 @@
 #ifndef INSTAPAY_ITRANSACTION_H
 #define INSTAPAY_ITRANSACTION_H
 
-
-#include "../../../presentation/Response.hpp"
+#include "../../../presentation/OperationResult.hpp"
 
 class ITransaction {
 public:
-    virtual Response execute(const double& amount) = 0;
+    virtual OperationResult execute(const double& amount) = 0;
     virtual ~ITransaction() = default;
 };
 

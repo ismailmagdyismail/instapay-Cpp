@@ -11,7 +11,7 @@ TransferMoney::TransferMoney(
     this->transferAuth = std::move(transferAuth);
 }
 
- Response TransferMoney::execute(const double &amount) {
+ OperationResult TransferMoney::execute(const double &amount) {
     // TODO : this logic of Transferring and atomicity should be Handled by the 3rrd party API service
     auto response = this->transferAuth->isTransferValid();
     if(!response.isSuccessful){

@@ -7,7 +7,7 @@
 
 class InMemoryUsers final : public IUserDataAccess{
 public:
-    virtual std::optional<Response> addUser(const std::unique_ptr<IUser>& newUser) override;
+    virtual std::optional<OperationResult> addUser(const std::unique_ptr<IUser>& newUser) override;
     virtual std::optional<IUser*> getUserByPhoneNumber(const std::string& phoneNumber)const override;
     virtual std::optional<IUser*> getUserByUserName(const std::string& userName) const override;
     virtual unsigned int getUsersCount()const override;

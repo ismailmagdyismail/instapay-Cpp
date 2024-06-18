@@ -4,7 +4,7 @@
 #include <unordered_map>
 #include <vector>
 #include "../../../../users/domain/UserType.hpp"
-#include "../../../../presentation/Response.hpp"
+#include "../../../../presentation/OperationResult.hpp"
 
 class TransferAuthorizer {
 public:
@@ -12,7 +12,7 @@ public:
         this->senderType = senderType;
         this->receiverType = receiverType;
     }
-    Response isTransferValid();
+    OperationResult isTransferValid();
 private:
     UserType senderType;
     UserType receiverType;

@@ -4,14 +4,14 @@
 #include <iostream>
 #include <optional>
 #include <unordered_map>
-#include "../../../presentation/Response.hpp"
+#include "../../../presentation/OperationResult.hpp"
 
 class MockWalletDB {
 public:
     static bool isRegisteredUser(const std::string& phoneNumber);
     static std::optional<double> getUserBalance(const std::string& phoneNumber);
-    static Response updateUserBalance(const std::string& phoneNumber, const double& newBalance);
-    static Response addUser(const std::string& phoneNumber);
+    static OperationResult updateUserBalance(const std::string& phoneNumber, const double& newBalance);
+    static OperationResult addUser(const std::string& phoneNumber);
 
 private:
     static std::unordered_map<std::string,double>db;

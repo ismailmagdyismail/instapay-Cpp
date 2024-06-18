@@ -4,7 +4,7 @@
 #include <iostream>
 #include <vector>
 #include "../domain/entities/transfers/Transaction.hpp"
-#include "../../presentation/Response.hpp"
+#include "../../presentation/OperationResult.hpp"
 
 class ITransactionDataAccess {
 public:

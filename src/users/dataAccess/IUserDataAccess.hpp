@@ -6,7 +6,7 @@
 
 class IUserDataAccess {
 public:
-    virtual std::optional<Response> addUser(const std::unique_ptr<IUser>& newUser) = 0;
+    virtual std::optional<OperationResult> addUser(const std::unique_ptr<IUser>& newUser) = 0;
     virtual std::optional<IUser*> getUserByPhoneNumber(const std::string& phoneNumber) const = 0 ;
     virtual std::optional<IUser*> getUserByUserName(const std::string& userName)const = 0;
     virtual unsigned int getUsersCount() const = 0 ;

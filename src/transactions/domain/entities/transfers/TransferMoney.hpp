@@ -13,7 +13,7 @@ public:
             std::unique_ptr<IGateway>&& receiverGateway,
             std::unique_ptr<TransferAuthorizer>&& transferAuth
             );
-    virtual Response execute(const double& amount)override;
+    virtual OperationResult execute(const double& amount)override;
 private:
     std::unique_ptr<IGateway> senderGateway;
     std::unique_ptr<IGateway> receiverGateway;

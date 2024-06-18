@@ -24,7 +24,7 @@ add_executable(
         src/_tests/GatewayTests.cpp
         src/_tests/GatewayTests.hpp
         src/users/dataAccess/IUserDataAccess.hpp
-        src/presentation/Response.hpp
+        src/presentation/OperationResult.hpp
         src/users/dataAccess/InMemoryUsers.cpp
         src/users/dataAccess/InMemoryUsers.hpp
         src/_tests/UsersTests.cpp
@@ -33,7 +33,7 @@ add_executable(
         src/transactions/domain/entities/ITransaction.hpp
         src/transactions/domain/entities/transfers/TransferMoney.cpp
         src/transactions/domain/entities/transfers/TransferMoney.hpp
-        src/transactions/usecase/TransferUseCase.hpp
+        src/transactions/usecase/TransactionsUsecase.hpp
         src/transactions/domain/entities/transfers/TransferAuthorizer.hpp
         src/users/domain/UserType.hpp
         src/transactions/domain/entities/transfers/TransferAuthorizer.cpp
@@ -41,4 +41,11 @@ add_executable(
         src/transactions/dataAccess/ITransactionDataAccess.hpp
         src/transactions/dataAccess/InMemoryTransactions.cpp
         src/transactions/dataAccess/InMemoryTransactions.hpp
+        src/users/controllers/UsersHandlers.cpp
+        src/users/controllers/UsersHandlers.h
+        src/transactions/controllers/TransactionsHandlers.cpp
+        src/transactions/controllers/TransactionsHandlers.hpp
+        src/InstapayServer.cpp
+        src/InstapayServer.h
+        src/transactions/usecase/TransactionsUsecase.cpp
 )
