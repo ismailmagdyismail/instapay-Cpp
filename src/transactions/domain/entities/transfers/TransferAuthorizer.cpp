@@ -6,9 +6,10 @@ std::unordered_map<UserType,std::vector<UserType>> TransferAuthorizer::authMappi
 } ;
 
 OperationResult TransferAuthorizer::isTransferValid() {
-    bool isValidTransfer =std::find(
+    bool isValidTransfer = std::find(
             TransferAuthorizer::authMapping[this->senderType].begin(),
-            TransferAuthorizer::authMapping[this->receiverType].end(),receiverType
+            TransferAuthorizer::authMapping[this->senderType].end(),
+            receiverType
     ) != TransferAuthorizer::authMapping[this->senderType].end();
     if(!isValidTransfer){
         return OperationResult{false, 403, "UnAuthorized execute a transfer" };

@@ -4,6 +4,7 @@
 #include "users/dataAccess/InMemoryUsers.hpp"
 #include "transactions/dataAccess/InMemoryTransactions.hpp"
 #include "users/controllers/UsersHandlers.hpp"
+#include "users/domain/BankUser.hpp"
 
 InstapayServer* InstapayServer::instance = nullptr;
 
@@ -12,7 +13,7 @@ InstapayServer::InstapayServer() {
     this->transactionDataAccess = std::make_unique<InMemoryTransactions>();
 
     // Dummy accounts for testing
-    userDataAccess->addUser(std::make_unique<WalletUser>(UserProfile{"ismail1", "password", "011223455"}, "vodafone"));
+    userDataAccess->addUser(std::make_unique<BankUser>(UserProfile{"ismail1", "password", "011223455"}, "bank","011223455"));
     userDataAccess->addUser(std::make_unique<WalletUser>(UserProfile{"ismail2", "password", "011223466"}, "vodafone"));
 
 
