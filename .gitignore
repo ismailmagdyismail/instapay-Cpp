@@ -3,3 +3,6 @@
 /.idea
 /cpp-httplib
 /json
+/cmake
+.clangd
+compile_commands.json
