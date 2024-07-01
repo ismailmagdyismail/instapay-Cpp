@@ -35,6 +35,7 @@ void test(A a){
 
 int main(){
     B(A{});
+    std::cout<<"Test 2 for DEMO purposess";
     // std::cout<<"Hello world";
    InstapayServer* instapayServer = InstapayServer::getInstance();
    instapayServer->run();
