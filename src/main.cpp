@@ -5,7 +5,7 @@
 #include "../cpp-httplib/httplib.h"
 
 int main(){
-    std::cout<<"DEMO\n";
+    std::cout<<"DEMO2\n";
     InstapayServer* instapayServer = InstapayServer::getInstance();
     instapayServer->run();
     delete instapayServer;
